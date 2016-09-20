@@ -1,5 +1,45 @@
 ---
 title: "My Website"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    code_folding: hide
 ---
 
 Hello, Website!
+
+
+## Table
+
+See vignette
+
+```{r}
+library(DT)
+datatable(iris)
+```
+
+## Plot
+
+See vignette
+
+```{r, message=F}
+library(plotly)
+m <- loess(unemploy / pop ~ as.numeric(date), data = economics)
+p <- plot_ly(economics, x = date, y = unemploy / pop, name = "raw") 
+add_trace(p, x = date, y = fitted(m), name = "loess")
+```
+
+## Map
+
+See `?leaflet`
+
+```{r}
+library(leaflet)
+
+leaflet() %>% 
+  addTiles() %>% 
+  setView(-119.845559, 34.4136876, zoom = 15)
+```
+
